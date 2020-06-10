@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/diegomagdaleno/trm/lib"
 	"github.com/spf13/cobra"
 )
 
@@ -29,12 +28,16 @@ var rootCmd = &cobra.Command{
 		if err != nil {
 			log.Fatal(err)
 		}
-		if (fileType.Mode()).IsDir() && !recursive {
-			log.Fatal("File is a directory did you forget to specify recursivness?")
-		} else if !(fileType.Mode()).IsDir() && recursive {
-			log.Fatal("Your specified recursivness however your file is not a directory")
+		switch whatType := (fileType.Mode()).IsDir(); whatType {
+		case true && recursive:
+			fmt.Println("Moving dir as it is  a dir and recursive is specified")
+		case false && recursive:
+			fmt.Println("User specified recursive but the directory is a file")
+		case true && !recursive:
+			fmt.Println("File is a dir but no recursivness was specified")
+		default:
+			fmt.Println("Is a file and not recursive")
 		}
-		lib.MoveFile(file)
 
 	},
 }
