@@ -3,6 +3,7 @@ package lib
 import (
 	"log"
 	"os/user"
+	"runtime"
 )
 
 func getUserHome() (string, error) {
@@ -19,5 +20,15 @@ func GetTrash() string {
 		log.Fatal(err)
 	}
 
-	return homeDir + "/.local/share/Trash/files"
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		return homeDir + "/.Trash"
+	case "linux", "bsd":
+		return homeDir + "/.local/share/Trash/files"
+	default:
+		log.Fatal("Not a suported operating system")
+	}
+
+	return "unknow"
+
 }
