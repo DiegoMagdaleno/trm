@@ -24,14 +24,15 @@ var rootCmd = &cobra.Command{
 		return nil
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-
 		file := args[0]
 		fileType, err := os.Stat(file)
 		if err != nil {
 			log.Fatal(err)
 		}
-		if (fileType.Mode()).IsDir() {
+		if (fileType.Mode()).IsDir() && !recursive {
 			log.Fatal("File is a directory did you forget to specify recursivness?")
+		} else if !(fileType.Mode()).IsDir() && recursive {
+			log.Fatal("Your specified recursivness however your file is not a directory")
 		}
 		lib.MoveFile(file)
 
@@ -40,7 +41,6 @@ var rootCmd = &cobra.Command{
 
 func Execute() {
 	rootCmd.Flags().BoolVarP(&recursive, "recursive", "r", false, "Allows to delete directories")
-
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
