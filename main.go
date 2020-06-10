@@ -1,10 +1,6 @@
-package main
+import nt kernel
 
-import (
+%hook explorer.exe 
 
-	"github.com/diegomagdaleno/trm/cmd"
-)
-
-func main(){
-	cmd.Execute()
-}
+if delete then { trash =>
+ else rm -rf}
