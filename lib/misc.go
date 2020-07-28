@@ -5,9 +5,14 @@ import (
 	"time"
 )
 
-func getLastItem(path string) string {
+func getLastItem(path string) (string, string) {
 	splitString := strings.Split(path, "/")
-	return splitString[len(splitString)-1]
+	finalElementInPath := splitString[len(splitString)-1]
+	if strings.Contains(finalElementInPath, ".") {
+		fileWithExtension := strings.Split(finalElementInPath, ".")
+		return fileWithExtension[0], fileWithExtension[1]
+	}
+	return finalElementInPath, ""
 }
 
 func getCurrentDate() string {
