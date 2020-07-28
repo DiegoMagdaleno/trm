@@ -7,8 +7,8 @@ DESTDIR=$
 PREFIX=/usr/local
 
 build:
-	@echo "Building $(GOFILES) to ./bin"
-	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go build -o bin/$(GONAME) $(GOFILES)
+	@echo "Building $(GOFILES) to $(GOBIN)"
+	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go build -o $(GOBIN)/$(GONAME) $(GOFILES)
 
 get:
 	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get .
