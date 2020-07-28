@@ -1,6 +1,10 @@
+<p align="center">
+<img src="https://i.imgur.com/NM2G8Jb.png" width=25% height=25%/>
+</p>
+
 # TRM (Trashrm)
 
-Move your file to the trash can insted of losing them forever!
+Move your files and folders to the Trash insted of losing them forever!
 
 [![GitHub issues](https://img.shields.io/github/issues/DiegoMagdaleno/trm?style=for-the-badge)](https://github.com/DiegoMagdaleno/trm/issues)
 [![GitHub forks](https://img.shields.io/github/forks/DiegoMagdaleno/trm?style=for-the-badge)](https://github.com/DiegoMagdaleno/trm/network)
