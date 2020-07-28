@@ -16,7 +16,7 @@ get:
 install:
 	$(MAKE) -C .
 	@install -d $(DESTDIR)$(PREFIX)/bin
-	@install -m 777 $(DESTDIR)/$(PREFIX)/bin/trm $(DESTDIR)$(PREFIX)/bin
+	@install -m 777 $(DESTDIR)$(PREFIX)/bin/trm $(DESTDIR)$(PREFIX)/bin
 
 run:
 	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go run $(GOFILES)
