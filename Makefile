@@ -1,7 +1,7 @@
 GOPATH=$(shell pwd)/vendor:$(shell pwd)
 GOBIN=$(shell pwd)/bin
 GOFILES=$(wildcard *.go)
-GONAME=$(shell basename "$(PWD)")
+GONAME=$(shell basename "$(PWD)" | awk '{split($$0,a,"-"); print a[1]}' )
 PID=/tmp/go-$(GONAME).pid
 DESTDIR=$
 PREFIX=/usr/local
