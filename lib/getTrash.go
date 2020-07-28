@@ -14,7 +14,7 @@ func getUserHome() (string, error) {
 	return usr.HomeDir, err
 }
 
-func GetTrash() string {
+func getTrash() string {
 	homeDir, err := getUserHome()
 	if err != nil {
 		log.Fatal(err)
