@@ -19,9 +19,15 @@ func fileExist(filePath string) bool {
 
 func MoveFile(file string) {
 	fileName, extension := getLastItem(file)
-	filePathInTrash := fmt.Sprintf("%s/%s.%s", getTrash(), fileName, extension)
+	filePathInTrash := fmt.Sprintf("%s/%s", getTrash(), fileName)
+	if extension != "" {
+		filePathInTrash = fmt.Sprintf("%s/%s.%s", getTrash(), fileName, extension)
+	}
 	if fileExist(filePathInTrash) {
-		filePathInTrash = fmt.Sprintf("%s/%s-%s.%s", getTrash(), fileName, getCurrentDate(), extension)
+		filePathInTrash = fmt.Sprintf("%s/%s-%s", getTrash(), fileName, getCurrentDate())
+		if extension != "" {
+			filePathInTrash = fmt.Sprintf("%s/%s-%s.%s", getTrash(), fileName, getCurrentDate(), extension)
+		}
 	}
 	err := os.Rename(file, filePathInTrash)
 	if err != nil {
